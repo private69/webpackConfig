@@ -1,8 +1,5 @@
 
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const webpackDevServer = require('webpack-dev-server')
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -10,12 +7,28 @@ module.exports = {
         // path: path.resolve(__dirname, 'dist'), // 打包在当前目录
         path: path.resolve("", 'dist'),
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            // 创建的html文件的title
-            title: "copy"
-        }),
-        // 清空特定文件夹
-        new CleanWebpackPlugin(),
-    ],
+    plugins: [],
+    module: {
+        // rules: [
+        //     {
+        //         test: /\.css$/,
+        //         loader: ['style-loader' , 'css-loader']
+        //     }
+        // ]
+        loaders: [
+            { test: /\.css$/ , loader: "style-loader!css-loader"},
+            { test: /\.js$/ , loader: "babel-loader" , exclude: /node_modules/},
+            { test: /\.css$/ , loader: "style-loader!css-loader!less-loader"},
+            { test: /\.(png|.jpg|.jpeg)$/ , loader: "url-loader"},
+            { test: /\.vue$/ , loader: "vue-loader"}
+        ]
+    },
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js', // 'vue/dist/vue.common.js' for webpack 1
+            // '@': path.resolve(__dirname,'../src'),
+            '@': '../src',
+        }
+    },
+    
 }
