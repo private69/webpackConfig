@@ -200,7 +200,7 @@
 | html-loader       | 将 HTML 文件导出编译为字符串，可供 js 识别的其中一个模块     | ^2.1.2  |
 | css-loader        | 解析 css 文件中代码                                          | ^5.2.4  |
 | style-loader      | 将 css 模块作为样式导出到 DOM 中                             | ^2.0.0  |
-| less-loader       | 加载和转义 less 文件                                         | ^8.1.1  |
+| less-loader       | 加载和转义 less 文件                                         | ^4.0.0  |
 | sass-loader       | 加载和转义 sass/scss 文件                                    |         |
 | url-loader        | 多数用于加载图片资源,超过文件大小显示则返回 data URL。内置了 `file-loader` | ^4.1.1  |
 | vue-loader        | 加载和转义 vue 组件                                          | ^11.0.0 |
@@ -465,7 +465,10 @@
   ],
   ```
 
-  
+11、this.getOptions is not a function
+
+- 问题：less-loader版本过高
+- 解决：调整less-loader的版本
 
 #### PS.1、
 
@@ -478,6 +481,18 @@
 #### PS.3、
 
 启动webpack-dev-server后，在目标文件夹中是看不到编译后的文件的，实时编译后的文件都保存到了内存当中
+
+#### PS.4、
+
+查看webpack打包后的js报错位置：在配置文件中增加devtool
+
+```js
+module.exports = {
+    devtool: 'inline-source-map'
+}
+```
+
+
 
 ## 文章：
 
@@ -509,4 +524,4 @@
 
 13、[**webpack-dev-server使用方法**](https://segmentfault.com/a/1190000006670084)
 
-14、
+14、[**webpack开发自定义loader**](https://blog.csdn.net/weixin_38080573/article/details/105254076)

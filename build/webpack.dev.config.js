@@ -8,6 +8,7 @@ module.exports = merge(common , {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
     ],
+    devtool: 'inline-source-map',
     devServer: {
         // 服务器资源根目录
         // contentBase: path.join(__dirname , 'dist'),

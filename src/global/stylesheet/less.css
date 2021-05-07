@@ -1,0 +1,6 @@
+.dy-side-bar__fieldset {
+    position: relative;
+    border-radius: 20%;
+    box-shadow: 2px 2px 0px #0f0 outset;
+    display: block;
+}

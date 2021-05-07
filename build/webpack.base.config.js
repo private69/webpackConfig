@@ -1,4 +1,3 @@
-
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
@@ -12,27 +11,43 @@ module.exports = {
         new HtmlWebpackPlugin({
             // 创建的html文件的title
             title: "copy",
-            template: path.resolve(__dirname , '../index.html'),
+            template: path.resolve(__dirname, '../index.html'),
         }),
     ],
     module: {
-        // rules: [
-        //     {
-        //         test: /\.css$/,
-        //         loader: ['style-loader' , 'css-loader']
-        //     }
-        // ]
-        loaders: [
-            { test: /\.css$/ , loader: "style-loader!css-loader"},
-            { test: /\.js$/ , loader: "babel-loader" , exclude: /node_modules/},
-            { test: /\.css$/ , loader: "style-loader!css-loader!less-loader"},
-            { test: /\.(png|.jpg|.jpeg)$/ , loader: "url-loader"},
-            { test: /\.vue$/ , loader: "vue-loader"}
-        ]
+        rules: [{
+                    test: /\.css$/,
+                    loader: ['style-loader', 'css-loader']
+                },
+                {
+                    test: /\.less$/,
+                    loader: ['style-loader', 'css-loader', 'less-loader']
+                },
+                {
+                    test: /\.js$/,
+                    loader: ['babel-loader']
+                },
+                {
+                    test: /\.vue$/,
+                    loader: ['vue-loader']
+                },
+                {
+                    test: /\.(png|jpg|jpeg)$/,
+                    loader: ['url-loader']
+                },
+
+            ]
+            // loaders: [
+            //     { test: /\.css$/, loader: "style-loader!css-loader" },
+            //     { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ },
+            //     { test: /\.less$/, loader: "style-loader!css-loader!less-loader" },
+            //     { test: /\.(png|.jpg|.jpeg)$/, loader: "url-loader" },
+            //     { test: /\.vue$/, loader: "vue-loader" }
+            // ]
     },
     resolve: {
         // 尝试匹配无后缀的文件（使用以下后缀匹配，从左往右）
-        extension: ['.js' , '.css' , '.vue' , ],
+        extensions: ['.js', '.css', '.vue', ],
         alias: {
             // 匹配vue结尾的结尾的导向语句
             'vue$': 'vue/dist/vue.esm.js', // 'vue/dist/vue.common.js' for webpack 1
@@ -40,5 +55,5 @@ module.exports = {
             '@': '../src',
         }
     },
-    
+
 }
