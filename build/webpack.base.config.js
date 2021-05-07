@@ -1,5 +1,6 @@
 
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -7,7 +8,13 @@ module.exports = {
         // path: path.resolve(__dirname, 'dist'), // 打包在当前目录
         path: path.resolve("", 'dist'),
     },
-    plugins: [],
+    plugins: [
+        new HtmlWebpackPlugin({
+            // 创建的html文件的title
+            title: "copy",
+            template: path.resolve(__dirname , '../index.html'),
+        }),
+    ],
     module: {
         // rules: [
         //     {
@@ -24,7 +31,10 @@ module.exports = {
         ]
     },
     resolve: {
+        // 尝试匹配无后缀的文件（使用以下后缀匹配，从左往右）
+        extension: ['.js' , '.css' , '.vue' , ],
         alias: {
+            // 匹配vue结尾的结尾的导向语句
             'vue$': 'vue/dist/vue.esm.js', // 'vue/dist/vue.common.js' for webpack 1
             // '@': path.resolve(__dirname,'../src'),
             '@': '../src',

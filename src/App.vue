@@ -1,7 +1,7 @@
 <template>
     <div>
         <fieldset>
-            <legend>这是app</legend>
+            <legend>这是appcac</legend>
             <Header></Header>
         </fieldset>
     </div>

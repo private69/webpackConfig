@@ -122,7 +122,7 @@
 
   ```js
   devServer: {
-      contentBase —— 指定服务器资源的根目录，默认是项目的目录
+      contentBase —— 指定服务器资源的根目录，默认是当前项目的目录
       port —— 服务的端口号
       host —— 服务器的主机号
       historyApiFallback —— 用于应对返回404页面时定向到特定页面用的
@@ -374,7 +374,8 @@
   }
   ```
 
-  
+
+
 
 ## 问题：
 
@@ -450,9 +451,33 @@
 - 问题：import导入文件模块是ES6模块化语法，而浏览器并不支持ES6语法
 - 解决方法：将index.html的原来引入的js文件改为dist目录下生成的js文件
 
+### 10、Hot Module Replacement is disabled
 
+- 详情：热模块替换不可用
 
-PS.1 插件与加载器的报错信息中大部分是由于版本的冲突导致的。
+- 问题：webpack项目缺少了相关插件
+
+- 解决：
+
+  ```js
+  plugins: [
+  	new webpack.HotModuleReplacementPlugin(),
+  ],
+  ```
+
+  
+
+#### PS.1、
+
+插件与加载器的报错信息中大部分是由于版本的冲突导致的。
+
+#### PS.2、
+
+开发环境中也需要使用 html-webpack-plugin插件，并且需要将模板替换为根目录的 index.html 文件
+
+#### PS.3、
+
+启动webpack-dev-server后，在目标文件夹中是看不到编译后的文件的，实时编译后的文件都保存到了内存当中
 
 ## 文章：
 
@@ -482,4 +507,6 @@ PS.1 插件与加载器的报错信息中大部分是由于版本的冲突导致
 
 12、[**.babelrc之配置文件**](https://www.cnblogs.com/tugenhua0707/p/9452471.html)
 
-13、
+13、[**webpack-dev-server使用方法**](https://segmentfault.com/a/1190000006670084)
+
+14、

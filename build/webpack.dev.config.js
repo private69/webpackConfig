@@ -1,15 +1,20 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.base.config')
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = merge(common , {
     // mode: 'development',
-    plugins: [],
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+    ],
     devServer: {
         // 服务器资源根目录
-        contentBase: "./",
+        // contentBase: path.join(__dirname , 'dist'),
+        // contentBase: './dist',
         host: 'localhost',
         port: 8080,
-        open: true,
+        // open: true,
         // 自动刷新
         inline: true,
         // 热模块替换
