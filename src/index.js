@@ -1,7 +1,7 @@
 import Vue from 'vue'
 // import Vue from '../node_modules/vue';
 import App from './App.vue'
-// import './global/stylesheet/less.css'
+import './global/stylesheet/main.css'
 import './global/extendComponents'
 
 function add(...params) {
@@ -16,6 +16,9 @@ console.log(add(1, 2, 3, 4, 5, 6))
 new Vue({
     el: "#app",
     render: h => h(App),
-    //    template: '<App/>',
+    //    template: '<App/>',   
     //   components: { App },
 })
+
+// document.getElementsByClassName("box-img")[0].getElementsByTagName("img")[0].src
+// document.getElementById("innerdiv").getElementsByTagName("img")[0].src

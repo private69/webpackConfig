@@ -465,10 +465,15 @@
   ],
   ```
 
-11、this.getOptions is not a function
+### 11、this.getOptions is not a function
 
-- 问题：less-loader版本过高
-- 解决：调整less-loader的版本
+- 问题：less-loader或css-loader或sass-loader版本过高
+- 解决：调整less-loader或css-loader或sass-loader的版本
+
+### 12、样式中的scoped的问题
+
+- 详情：scoped 属性是一个布尔属性。使用该属性，则样式仅仅应用到 style 元素的父元素及其子元素。
+- 问题：当不使用scoped时，页面样式会继续作用于该页面内部的组件，使用时，组件的样式不会被该页面所波及。
 
 #### PS.1、
 

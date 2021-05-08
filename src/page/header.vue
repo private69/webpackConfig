@@ -1,6 +1,6 @@
 <template>
   <div id="header" ref="header">
-    this is header
+    <span> this is header </span>
     <div></div>
     <component is="dysidebar" :testprops="'hello world'"></component>
     <!-- <component
@@ -50,3 +50,10 @@ export default {
   //   },
 };
 </script>
+<style lang="less" scoped>
+#header {
+  span {
+    color: #f00;
+  }
+}
+</style>
