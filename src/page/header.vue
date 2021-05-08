@@ -1,7 +1,6 @@
 <template>
   <div id="header" ref="header">
     <span> this is header </span>
-    <div></div>
     <component is="dysidebar" :testprops="'hello world'"></component>
     <!-- <component
       v-for="(val, index) in cpmarr"

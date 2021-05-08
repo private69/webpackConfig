@@ -1,6 +1,29 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
 .dy-side-bar__fieldset {
     position: relative;
     border-radius: 20%;
-    box-shadow: 2px 2px 0px #0f0 outset;
+    box-shadow: 2px 2px 3px #0f0 inset;
     display: block;
+}
+
+.bg {
+    background: #000;
 }

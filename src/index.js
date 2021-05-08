@@ -1,7 +1,7 @@
 import Vue from 'vue'
 // import Vue from '../node_modules/vue';
 import App from './App.vue'
-import './global/stylesheet/main.css'
+import './global/importCss'
 import './global/extendComponents'
 
 function add(...params) {

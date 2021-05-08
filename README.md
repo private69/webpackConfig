@@ -374,7 +374,17 @@
   }
   ```
 
+## 4、开发loader
 
+- 简述：每一个loader会导出一个方法，而且该方法接收一个参数（source——包含源文件内容的字符串）。
+
+- 示例（sass-loader）：
+
+  > 1、scss文件的源代码会先交给sass-loader加载器，把scss代码转换为css
+  >
+  > 2、sass-loader返回css代码，并将其交由css-loader处理
+  >
+  > 3、把 css-loader返回的css交给 style-loader 处理，转换成通过脚本加载的 JavaScript 代码
 
 
 ## 问题：
