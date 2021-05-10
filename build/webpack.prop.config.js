@@ -12,7 +12,7 @@ module.exports = merge(common, {
     entry: {
         bundle: './src/index.js',
         // 获取 dependencies 依赖的库，并抽离成单独的文件 vendor.js
-        vendor: Object.keys(package.dependencies),
+        // vendor: Object.keys(package.dependencies),
     },
     output: {
         filename: '[name].js',
