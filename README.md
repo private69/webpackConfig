@@ -160,7 +160,7 @@
 
 ### 7、extract-text-plugin ^2.1.2
 
-- 安装：npm install extract-text-plugin --save-dev
+- 安装：npm install extract-text-webpack-plugin --save-dev
 
 - 作用：主要是为了抽离 css 样式,防止将样式打包在 js 中引起页面样式加载错乱的现象（由于在某些场景下css的内容会被打包到js文件，那么当修改了css或者js的内容时，css模块以及js模块都会被重新打包）
 
@@ -189,6 +189,10 @@
     new ExtractTextPlugin("styles.css"),
   ]
   ```
+  
+- ![](print/extractTextWebpackPlugin 01.png)
+
+PS. 在webpack4中，建议用 mini-css-extract-plugin 替代
 
 
 ### 8、常用加载器
@@ -285,6 +289,80 @@
       }
   }
   ```
+
+### 13、postcss使用
+
+官网：[**https://www.postcss.com.cn/**](https://www.postcss.com.cn/)
+
+- 介绍：postcss是一个转换 CSS 代码的工具，通过postcss可以做到部分工程化的操作（代码合并、压缩等）。
+
+- 功能：把 CSS 解析成 JavaScript 可以操作的 抽象语法树结构（AST），调用插件来处理AST并得到结果。
+
+- 安装：
+
+  > npm	install	postcss-loader	--save-dev
+  >
+  > npm	install	postcss-cssnext	--save-dev
+  >
+  > npm	insatll	postcss-import	--save-dev
+
+- 相关配置：
+
+  - 根目录新增配置文件`postcss.config.js`：
+
+    ```js
+    module.exports = {
+      plugins: {
+        'postcss-import': {},
+        'postcss-cssnext': {
+          browsers: ['last 2 versions', '> 5%'],
+        },
+      },
+    };
+    ```
+
+  - 添加postcss-loader：
+
+    ```js
+    module: {
+    	rules: [{
+            test: /\.css$/,
+            loader: [
+                'style-loader', 
+                'css-loader', 
+                'postcss-loader',
+            ]
+        },
+    ],
+    postcss: () => {
+       return [require('autoprefixer')];
+     }
+    ```
+
+### 14、抽离打包的js文件（CommonsChunkPlugin）
+
+- 配置：
+
+  ```webpack.prop.config.js
+  const package = require('../package.json')
+  const merge = require('webpack-merge');
+  const common = require('./webpack.base.config')
+  module.exports = merge(common, {
+      entry: {
+          // 获取 dependencies 依赖的库，并抽离成单独的文件 vendor.js
+          vendor: Object.keys(package.dependencies),
+      },
+      plugin: {
+  		new webpack.optimize.CommonsChunkPlugin({
+              name: "chunk",
+              // 抽离的js文件名称 （使用变量name = chunk）
+              filename: "[name].js"
+          }),
+  	}
+  }
+  ```
+
+  
 
 ## 3、独立配置文件
 
@@ -485,6 +563,26 @@
 - 详情：scoped 属性是一个布尔属性。使用该属性，则样式仅仅应用到 style 元素的父元素及其子元素。
 - 问题：当不使用scoped时，页面样式会继续作用于该页面内部的组件，使用时，组件的样式不会被该页面所波及。
 
+### 13、Module build failed: CssSyntaxError
+
+- 详情：解析css失败
+- 问题：webpack解析loader时，默认是从右往左，下往上；顺序不能乱。并且配置文件中切勿出现重复的配置（基础配置`webpack.base.config.js` 与生产配置、开发配置不能有重复 ）
+- 解决：调整loader 的次序。
+
+14、npm打包：Can't resolve 'tls'
+
+- 解决：可以在配置文件加上
+
+  ```js
+  node: {
+  	fs: "empty",
+      tls: "empty",
+      net: "empty"
+  }
+  ```
+
+  
+
 #### PS.1、
 
 插件与加载器的报错信息中大部分是由于版本的冲突导致的。
@@ -540,3 +638,5 @@ module.exports = {
 13、[**webpack-dev-server使用方法**](https://segmentfault.com/a/1190000006670084)
 
 14、[**webpack开发自定义loader**](https://blog.csdn.net/weixin_38080573/article/details/105254076)
+
+15、**[webpack entry和output配置属性](https://www.cnblogs.com/mengfangui/p/7509827.html)**

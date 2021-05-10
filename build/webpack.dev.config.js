@@ -3,8 +3,20 @@ const common = require('./webpack.base.config')
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = merge(common , {
+module.exports = merge(common, {
     // mode: 'development',
+    entry: './src/index.js',
+    output: {
+        filename: 'bandle.js',
+        // path: path.resolve(__dirname, 'dist'), // 打包在当前目录
+        path: path.resolve("", 'dist'),
+    },
+    module: {
+        rules: [{
+            test: /\.css$/,
+            loader: ['style-loader', 'css-loader']
+        }, ]
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
     ],

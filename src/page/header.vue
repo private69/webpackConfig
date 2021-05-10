@@ -1,12 +1,12 @@
 <template>
   <div id="header" ref="header">
     <span> this is header </span>
-    <component is="dysidebar" :testprops="'hello world'"></component>
-    <!-- <component
+    <!-- <component is="dysidebar" :testprops="'hello world'"></component> -->
+    <component
       v-for="(val, index) in cpmarr"
       :key="index"
       :is="val"
-    ></component> -->
+    ></component>
     <button @click="add">add</button>
   </div>
 </template>

@@ -1,12 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        filename: 'bandle.js',
-        // path: path.resolve(__dirname, 'dist'), // 打包在当前目录
-        path: path.resolve("", 'dist'),
-    },
     plugins: [
         new HtmlWebpackPlugin({
             // 创建的html文件的title
@@ -16,10 +10,6 @@ module.exports = {
     ],
     module: {
         rules: [{
-                    test: /\.css$/,
-                    loader: ['style-loader', 'css-loader']
-                },
-                {
                     test: /\.less$/,
                     loader: ['style-loader', 'css-loader', 'less-loader']
                 },
@@ -55,5 +45,9 @@ module.exports = {
             '@': '../src',
         }
     },
-
+    node: {
+        fs: "empty",
+        tls: "empty",
+        net: "empty"
+    }
 }
