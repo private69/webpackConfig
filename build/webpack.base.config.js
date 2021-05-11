@@ -1,5 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 获取绝对路径
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
+}
 module.exports = {
     // entry: './src/index.js',
     // output: {
@@ -16,39 +20,42 @@ module.exports = {
     ],
     module: {
         rules: [{
-                    test: /\.less$/,
-                    loader: ['style-loader', 'css-loader', 'less-loader']
-                },
-                {
-                    test: /\.js$/,
-                    loader: ['babel-loader']
-                },
-                {
-                    test: /\.vue$/,
-                    loader: ['vue-loader']
-                },
-                {
-                    test: /\.(png|jpg|jpeg)$/,
-                    loader: ['url-loader']
-                },
-
-            ]
-            // loaders: [
-            //     { test: /\.css$/, loader: "style-loader!css-loader" },
-            //     { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ },
-            //     { test: /\.less$/, loader: "style-loader!css-loader!less-loader" },
-            //     { test: /\.(png|.jpg|.jpeg)$/, loader: "url-loader" },
-            //     { test: /\.vue$/, loader: "vue-loader" }
-            // ]
+            test: /\.less$/,
+            loader: ['style-loader', 'css-loader', 'less-loader']
+        },
+        {
+            test: /\.js$/,
+            loader: ['babel-loader']
+        },
+        {
+            test: /\.vue$/,
+            loader: ['vue-loader']
+        },
+        {
+            test: /\.(png|jpg|jpeg)$/,
+            loader: ['url-loader']
+        },
+        {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            loader: 'file-loader'
+        }
+        ]
+        // loaders: [
+        //     { test: /\.css$/, loader: "style-loader!css-loader" },
+        //     { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ },
+        //     { test: /\.less$/, loader: "style-loader!css-loader!less-loader" },
+        //     { test: /\.(png|.jpg|.jpeg)$/, loader: "url-loader" },
+        //     { test: /\.vue$/, loader: "vue-loader" }
+        // ]
     },
     resolve: {
         // 尝试匹配无后缀的文件（使用以下后缀匹配，从左往右）
-        extensions: ['.js', '.css', '.vue', ],
+        extensions: ['.js', '.css', '.vue',],
         alias: {
             // 匹配vue结尾的结尾的导向语句
             'vue$': 'vue/dist/vue.esm.js', // 'vue/dist/vue.common.js' for webpack 1
-            // '@': path.resolve(__dirname,'../src'),
-            '@': '../src',
+            // '@': path.join(__dirname,'../src'),
+            '@': resolve('src'),
         }
     },
     node: {

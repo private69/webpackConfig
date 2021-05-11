@@ -341,28 +341,40 @@ PS. 在webpack4中，建议用 mini-css-extract-plugin 替代
 
 ### 14、抽离打包的js文件（CommonsChunkPlugin）
 
-- 配置：
+- 基本配置（抽离vue）：
 
   ```webpack.prop.config.js
-  const package = require('../package.json')
   const merge = require('webpack-merge');
   const common = require('./webpack.base.config')
   module.exports = merge(common, {
       entry: {
           // 获取 dependencies 依赖的库，并抽离成单独的文件 vendor.js
-          vendor: Object.keys(package.dependencies),
+          vendor: ['vue'],
       },
       plugin: {
   		new webpack.optimize.CommonsChunkPlugin({
-              name: "chunk",
-              // 抽离的js文件名称 （使用变量name = chunk）
+              name: "vendor",
+              // 抽离的js文件名称 （使用变量name = vendor）
               filename: "[name].js"
           }),
   	}
   }
   ```
-
   
+![](print/抽离vue 01.png)
+
+### 15、配置 @
+
+```js
+resolve: {
+	alias: {
+        // 配置文件不再根目录
+        '@': path.join(__dirname, '..' ,'src')
+    }
+}
+```
+
+
 
 ## 3、独立配置文件
 

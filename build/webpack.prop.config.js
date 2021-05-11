@@ -12,7 +12,8 @@ module.exports = merge(common, {
     entry: {
         bundle: './src/index.js',
         // 获取 dependencies 依赖的库，并抽离成单独的文件 vendor.js
-        // vendor: Object.keys(package.dependencies),
+        // 将 vue 、element-ui单独抽离
+        vendor: ['vue' , 'element-ui' , 'less' , 'vue-router' , 'vuex'],
     },
     output: {
         filename: '[name].js',
@@ -33,9 +34,9 @@ module.exports = merge(common, {
         }]),
         new ExtractTextPlugin("style.css"),
         new webpack.optimize.CommonsChunkPlugin({
-            name: "vendor",
+            name: ["vendor-vue" , 'vendor-ele' , 'vendor-less' , 'vendor-vue-router' , 'vendor-vuex'],
             filename: "[name].js",
-            chunks: "bandle"
+            // chunks: "bandle"
         }),
     ],
     module: {

@@ -3,18 +3,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import './global/importCss'
 import './global/extendComponents'
+import './global/importUI'
+import router from './router'
 
-function add(...params) {
-    if (!params.length) return 0;
-    let sum = 0
-    params.forEach(val => {
-        sum += Number(val)
-    })
-    return sum
-}
-console.log(add(1, 2, 3, 4, 5, 6))
 new Vue({
     el: "#app",
+    router,
     render: h => h(App),
     //    template: '<App/>',   
     //   components: { App },

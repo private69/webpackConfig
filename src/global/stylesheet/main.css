@@ -1,5 +1,5 @@
 * {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 }
 
@@ -18,10 +18,10 @@ li {
 }
 
 .dy-side-bar__fieldset {
-    position: relative;
+    /* position: relative;
     border-radius: 20%;
     box-shadow: 2px 2px 3px #0f0 inset;
-    display: block;
+    display: block; */
 }
 
 .bg {
