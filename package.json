@@ -42,6 +42,8 @@
   },
   "dependencies": {
     "element-ui": "^2.15.1",
+    "jquery": "^3.6.0",
+    "layui": "^2.6.6",
     "less": "^4.1.1",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",

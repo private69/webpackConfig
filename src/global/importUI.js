@@ -1,6 +1,16 @@
 import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css'
 
+// 导入 jquery
+// import $ from 'jquery'
+// Vue.use($)
+
+// 引入 layui
+import layui from 'layui'
+import "layui/dist/css/layui.css"
+// import "layui/dist/layui.js"
+Vue.use(layui);
+
 // elementui全部引入
 // import Element from 'element-ui'
 // Vue.use(Element)

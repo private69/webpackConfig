@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack')
 // 获取绝对路径
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -17,6 +18,11 @@ module.exports = {
             title: "copy",
             template: path.resolve(__dirname, '../index.html'),
         }),
+        new webpack.ProvidePlugin({ 
+            $:  "jquery", 
+            jQuery: "jquery", 
+           "windows.jQuery": "jquery"
+   }) 
     ],
     module: {
         rules: [{
@@ -52,6 +58,8 @@ module.exports = {
         // 尝试匹配无后缀的文件（使用以下后缀匹配，从左往右）
         extensions: ['.js', '.css', '.vue',],
         alias: {
+            // 导入 layui
+            'layui$': 'layui/dist/layui.js',
             // 匹配vue结尾的结尾的导向语句
             'vue$': 'vue/dist/vue.esm.js', // 'vue/dist/vue.common.js' for webpack 1
             // '@': path.join(__dirname,'../src'),
