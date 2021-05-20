@@ -33,6 +33,21 @@
 export default {
   props: ["testprops"],
   mounted() {
+    this.$bus.on('add' , this.add);
+    this.$bus.emit('add' , 1,4);
   },
+  beforeDestroy(){
+    this.$bus.off('add' , 1,4);
+  },
+  methods: {
+    add(param){
+      let num = 0;
+      if(!param.length) return 0;
+      param.forEach( val => {
+        num += val;
+      })
+      console.log(num);
+    }
+  }
 };
 </script>

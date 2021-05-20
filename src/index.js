@@ -6,6 +6,9 @@ import './global/extendComponents'
 import './global/importUI'
 import router from './router'
 
+// 全局注册
+import bus from './global/base/bus'
+Vue.prototype.$bus = bus;
 new Vue({
     el: "#app",
     router,

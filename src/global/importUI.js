@@ -6,10 +6,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 // Vue.use($)
 
 // 引入 layui
-import layui from 'layui'
-import "layui/dist/css/layui.css"
+// import layui from 'layui'
+// import "layui/dist/css/layui.css"
 // import "layui/dist/layui.js"
-Vue.use(layui);
+// Vue.use(layui);
 
 // elementui全部引入
 // import Element from 'element-ui'
