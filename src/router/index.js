@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import main from '@/page/main/index.vue'
+import login from '@/page/login/index.vue'
+import person from '@/page/person/index.vue'
 
+import project from '@/page/newGuide/list.vue'
 Vue.use(VueRouter)
 const router = new VueRouter({
     mode: "hash",
@@ -9,13 +11,29 @@ const router = new VueRouter({
         // 路由重定向
         {
             path: '/',
-            redirect: '/main.html'
+            redirect: '/login.html'
         },
         // 懒加载
         {
-            path: '/main.html',
-            // component: () =>import('@/page/main/index')
-            component: main
+            path: '/login.html',
+            // component: () =>import('@/page/login/index')
+            component: login
+        },
+        {
+            path: '/person.html',
+            name: 'person',
+            component: person,
+        },
+        {
+            path: '/manage',
+            name: 'manage',
+            children: [
+                {
+                    path: 'project.html',
+                    name: 'project',
+                    component: project,
+                }
+            ]
         }
     ]
 })

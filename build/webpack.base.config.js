@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const progressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 const webpack = require('webpack')
 // 获取绝对路径
 function resolve(dir) {
@@ -22,7 +23,8 @@ module.exports = {
             $:  "jquery", 
             jQuery: "jquery", 
            "windows.jQuery": "jquery"
-   }) 
+        }),
+        new progressBarWebpackPlugin(),
     ],
     module: {
         rules: [{
@@ -30,7 +32,9 @@ module.exports = {
             loader: ['style-loader', 'css-loader', 'less-loader']
         },
         {
-            test: /\.js$/,
+            test: /\.js[x]$/,
+            include: [ resolve('src')],
+            exclude: /node_modules/,
             loader: ['babel-loader']
         },
         {
@@ -38,7 +42,7 @@ module.exports = {
             loader: ['vue-loader']
         },
         {
-            test: /\.(png|jpg|jpeg)$/,
+            test: /\.(png|jpg|jpeg|gif)$/,
             loader: ['url-loader']
         },
         {
