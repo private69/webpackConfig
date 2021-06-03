@@ -1,5 +1,7 @@
 const path = require('path')
+// 前端 模板
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 进度条
 const progressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 const webpack = require('webpack')
 // 获取绝对路径
@@ -32,6 +34,10 @@ module.exports = {
             loader: ['style-loader', 'css-loader', 'less-loader']
         },
         {
+            test: /\.txt$/,
+            loader: ['custom-less-loader']
+        },
+        {
             test: /\.js[x]$/,
             include: [ resolve('src')],
             exclude: /node_modules/,
@@ -57,6 +63,10 @@ module.exports = {
         //     { test: /\.(png|.jpg|.jpeg)$/, loader: "url-loader" },
         //     { test: /\.vue$/, loader: "vue-loader" }
         // ]
+    },
+    resolveLoader: {
+        // 告诉 webpack 该去那个目录下找 loader 模块
+        modules: ['node_modules', path.join(__dirname , '..', 'loader')]
     },
     resolve: {
         // 尝试匹配无后缀的文件（使用以下后缀匹配，从左往右）

@@ -1,0 +1,4 @@
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     D:\node\node-v10.12.0-win-x86\node_cache\_logs\2021-05-28T02_30_41_710Z-debug.log
