@@ -3,7 +3,11 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 进度条
 const progressBarWebpackPlugin = require('progress-bar-webpack-plugin');
-const webpack = require('webpack')
+const webpack = require('webpack');
+const happypack = require('happypack');
+const os = require('os');
+const happypackThreadPool = happypack.ThreadPool({size: os.cpus().length });
+
 // 获取绝对路径
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -16,6 +20,7 @@ module.exports = {
     //     path: path.resolve("", 'dist'),
     // },
     plugins: [
+        // new webpack.DllPlugin(),
         new HtmlWebpackPlugin({
             // 创建的html文件的title
             title: "copy",
@@ -27,6 +32,18 @@ module.exports = {
            "windows.jQuery": "jquery"
         }),
         new progressBarWebpackPlugin(),
+        new happypack({
+            //用id来标识 happypack处理那里类文件
+          id: 'happyBabel',
+          //如何处理  用法和loader 的配置一样
+          loaders: [{
+            loader: 'babel-loader?cacheDirectory=true',
+          }],
+          //共享进程池
+          threadPool: happypackThreadPool,
+          //允许 HappyPack 输出日志
+          verbose: true,    
+        }),
     ],
     module: {
         rules: [{
@@ -41,7 +58,7 @@ module.exports = {
             test: /\.js[x]$/,
             include: [ resolve('src')],
             exclude: /node_modules/,
-            loader: ['babel-loader']
+            loader: 'babel-loader?id=happyBabel'
         },
         {
             test: /\.vue$/,
