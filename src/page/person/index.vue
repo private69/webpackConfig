@@ -67,6 +67,11 @@ import logMessage from "./component/logMessage";
 import personalInfo from "./component/personalInfo";
 import accountSetup from "./component/accountSetup";
 export default {
+  provide() {
+    return {
+      "testObj": this.testObj
+    }
+  },
   data() {
     return {
       left: 6,
@@ -79,7 +84,17 @@ export default {
       cpmname: "personal-info",
       cpmArray: ["personal-info", "account-setup", "log-message"],
       userData: {},
+      testObj: {
+        name:'zhangsan',
+        age:20
+      },
     };
+  },
+  watch: {
+    testObj: {
+      handler(newVal){ console.log(newVal)},
+      deep: true
+    }
   },
   methods: {
     // 导入静态图片
@@ -92,6 +107,7 @@ export default {
     // 导航菜单的选择事件
     handleSelect(name) {
       this.activeIndex = name;
+      console.log(name);
       this.cpmname = null;
       if (this.cpmArray.indexOf(name) !== -1) this.cpmname = name;
     },

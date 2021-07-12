@@ -13,7 +13,7 @@
       <el-menu-item>
         <b> buildPageImplement </b>
       </el-menu-item>
-      <el-menu-item index="manage/project.html">首页</el-menu-item>
+      <el-menu-item index="/antd_table.html">首页</el-menu-item>
       <el-submenu index="manage">
         <template slot="title">我的工作台</template>
         <el-menu-item index="manage/project.html">作品列表</el-menu-item>
@@ -41,6 +41,7 @@
 </template>
 <script>
 export default {
+  inject: ['testObj'],
   props: {
     activeIndex: {
       type: String,
@@ -49,6 +50,13 @@ export default {
   },
   data() {
     return {};
+  },
+  mounted(){
+    console.log(this.testObj);
+    let timeInter = setInterval( ()=>{
+      if(this.testObj.age > 40) clearInterval(timeInter);
+      ++this.testObj.age
+    },500);
   },
   methods: {
     handleSelect(path) {

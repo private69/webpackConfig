@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'ant-design-vue/dist/antd.css'
 
 // 导入 jquery
 // import $ from 'jquery'
@@ -13,7 +14,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // elementui全部引入
 import Element from 'element-ui'
-Vue.use(Element)
+import Antd from 'ant-design-vue'
+Vue.use(Element);
+Vue.use(Antd)
 
 // 按需引入
 // import {

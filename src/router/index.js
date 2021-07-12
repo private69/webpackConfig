@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import login from '@/page/login/index.vue'
 import person from '@/page/person/index.vue'
 
-import project from '@/page/newGuide/list.vue'
+import project from '../page/newGuide/list.vue'
 Vue.use(VueRouter)
 const router = new VueRouter({
     mode: "hash",
@@ -25,15 +25,9 @@ const router = new VueRouter({
             component: person,
         },
         {
-            path: '/manage',
-            name: 'manage',
-            children: [
-                {
-                    path: 'project.html',
-                    name: 'project',
-                    component: project,
-                }
-            ]
+            path: "/antd_table.html",
+            name: "antd_table",
+            component: () => import('@/page/antdTable/index.vue')
         }
     ]
 })
