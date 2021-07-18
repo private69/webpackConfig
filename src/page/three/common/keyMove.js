@@ -47,4 +47,8 @@ exports.move = function (win = null, cb = null) {
       win.parentNode.removeChild(divy);
     }, 5 * 1000);
   }
+  win.onmouseup = function (){
+    win.__proto__.location.x = -1;
+    win.__proto__.location.y = -1;
+  }
 }
