@@ -91,10 +91,10 @@ export default {
     };
   },
   watch: {
-    testObj: {
-      handler(newVal){ console.log(newVal)},
-      deep: true
-    }
+    // testObj: {
+    //   handler(newVal){ console.log(newVal)},
+    //   deep: true
+    // }
   },
   methods: {
     // 导入静态图片

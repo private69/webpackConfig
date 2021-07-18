@@ -27,6 +27,15 @@
       <!-- <el-menu-item index="code/check">代码查看</el-menu-item> -->
       <el-menu-item index="achievement">成就</el-menu-item>
       <el-menu-item index="help">帮助文档</el-menu-item>
+      <el-submenu index="three">
+        <template slot="title">three</template>
+        <el-menu-item index="three/first-know.html">初次使用</el-menu-item>
+        <el-menu-item index="three/.html">字体列表</el-menu-item>
+        <el-menu-item index="three/.html">音乐素材</el-menu-item>
+        <el-menu-item index="three/.html">新手指引</el-menu-item>
+        <el-menu-item index="three/.html">组件管理</el-menu-item>
+        <el-menu-item index="three/.html">关于项目</el-menu-item>
+      </el-submenu>
       <span>
         <el-input style="width: 200px; cursor: pointer">
           <template slot="append">
