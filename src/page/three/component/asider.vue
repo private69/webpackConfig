@@ -4,6 +4,7 @@
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      @select="handleSelect"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
@@ -15,8 +16,8 @@
         </template>
         <el-menu-item-group>
           <template slot="title">分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
+          <el-menu-item index="movingExample">移动立方体</el-menu-item>
+          <el-menu-item index="drawLine">几何图像</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="分组2">
           <el-menu-item index="1-3">选项3</el-menu-item>
@@ -44,7 +45,11 @@
 export default {
     methods:{
         handleOpen(){},
-        handleClose(){}
+        handleClose(){},
+        handleSelect(val){
+          console.log(val);
+          this.$emit('handleSelect' , val);
+        }
     }
 }
 </script>

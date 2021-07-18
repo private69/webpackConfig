@@ -30,18 +30,7 @@ const router = new VueRouter({
             name: "antd_table",
             component: () => import('@/page/antdTable/index.vue')
         },
-        {
-            path: "/three",
-            name: "three",
-            component: () => import('@/page/three/primaryUse/index.vue'),
-            children: [
-                {
-                    path: '/three/first-know.html',
-                    name: 'first-know.html',
-                    component: () => import('@/page/three/primaryUse/index.vue')
-                }
-            ]
-        }
+        ...three,
     ]
 })
 export default router

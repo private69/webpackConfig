@@ -2,7 +2,7 @@ export default [
     {
         path: "/three",
         name: "three",
-        // component: () => import('@/page/antdTable/index.vue')
+        component: () => import('@/page/three/primaryUse/index.vue'),
         children: [
             {
                 path: '/three/first-know.html',

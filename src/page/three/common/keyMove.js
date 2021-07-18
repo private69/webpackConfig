@@ -5,6 +5,7 @@
  * 
  * */ 
 exports.move = function (win = null, cb = null) {
+  win.children && (win.innerHTML = "");
   if (!win) throw new Error("please use an valid document Object as first param!");
   win.__proto__.location = {
     x: -1,
@@ -26,9 +27,9 @@ exports.move = function (win = null, cb = null) {
     const divy = document.createElement('div');
     divx.style.backgroundColor = "#fcc";
     divy.style.backgroundColor = "#fcc";
-    divx.style.width = "400px";
+    divx.style.width = "500px";
     divx.style.height = "2px";
-    divy.style.height = "300px";
+    divy.style.height = "500px";
     divy.style.width = "2px";
     divx.style.zIndex = 1000;
     divy.style.zIndex = 1000;
@@ -45,10 +46,13 @@ exports.move = function (win = null, cb = null) {
     setTimeout(() => {
       win.parentNode.removeChild(divx);
       win.parentNode.removeChild(divy);
-    }, 5 * 1000);
+    }, 2 * 1000);
   }
-  win.onmouseup = function (){
-    win.__proto__.location.x = -1;
-    win.__proto__.location.y = -1;
+  // 鼠标上台 取消移动
+  win.onmouseup = function (e){
+    win.__proto__.location = {
+      x:-1,
+      y: -1
+    }
   }
 }
